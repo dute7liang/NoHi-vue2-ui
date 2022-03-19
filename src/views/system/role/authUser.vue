@@ -143,11 +143,11 @@ export default {
     getList() {
       this.loading = true;
       allocatedUserList(this.queryParams).then(response => {
-          this.userList = response.rows;
-          this.total = response.total;
-          this.loading = false;
-        }
-      );
+        let { data } = response
+        this.userList = data.rows;
+        this.total = data.total;
+        this.loading = false;
+      });
     },
     // 返回按钮
     handleClose() {

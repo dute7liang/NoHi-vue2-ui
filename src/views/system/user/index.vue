@@ -471,11 +471,11 @@ export default {
     getList() {
       this.loading = true;
       listUser(this.addDateRange(this.queryParams, this.dateRange)).then(response => {
-          this.userList = response.rows;
-          this.total = response.total;
-          this.loading = false;
-        }
-      );
+        let { data } = response
+        this.userList = data.rows;
+        this.total = data.total;
+        this.loading = false;
+      });
     },
     /** 查询部门下拉树结构 */
     getTreeselect() {

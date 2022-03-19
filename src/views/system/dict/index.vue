@@ -244,11 +244,11 @@ export default {
     getList() {
       this.loading = true;
       listType(this.addDateRange(this.queryParams, this.dateRange)).then(response => {
-          this.typeList = response.rows;
-          this.total = response.total;
-          this.loading = false;
-        }
-      );
+        let { data } = response
+        this.typeList = data.rows;
+        this.total = data.total;
+        this.loading = false;
+      });
     },
     // 取消按钮
     cancel() {

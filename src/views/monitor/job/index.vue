@@ -358,8 +358,9 @@ export default {
     getList() {
       this.loading = true;
       listJob(this.queryParams).then(response => {
-        this.jobList = response.rows;
-        this.total = response.total;
+        let { data } = response
+        this.jobList = data.rows;
+        this.total = data.total;
         this.loading = false;
       });
     },

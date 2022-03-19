@@ -236,11 +236,11 @@ export default {
     getList() {
       this.loading = true;
       list(this.addDateRange(this.queryParams, this.dateRange)).then( response => {
-          this.list = response.rows;
-          this.total = response.total;
-          this.loading = false;
-        }
-      );
+        let { data } = response
+        this.list = data.rows;
+        this.total = data.total;
+        this.loading = false;
+      });
     },
     // 操作日志类型字典翻译
     typeFormat(row, column) {

@@ -240,11 +240,11 @@ export default {
     getList() {
       this.loading = true;
       listConfig(this.addDateRange(this.queryParams, this.dateRange)).then(response => {
-          this.configList = response.rows;
-          this.total = response.total;
-          this.loading = false;
-        }
-      );
+        let { data } = response
+        this.configList = data.rows;
+        this.total = data.total;
+        this.loading = false;
+      });
     },
     // 取消按钮
     cancel() {

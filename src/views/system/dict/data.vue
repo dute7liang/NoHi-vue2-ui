@@ -288,15 +288,17 @@ export default {
     /** 查询字典类型列表 */
     getTypeList() {
       listType().then(response => {
-        this.typeOptions = response.rows;
+        let { data } = response
+        this.typeOptions = data.rows;
       });
     },
     /** 查询字典数据列表 */
     getList() {
       this.loading = true;
       listData(this.queryParams).then(response => {
-        this.dataList = response.rows;
-        this.total = response.total;
+        let { data } = response
+        this.dataList = data.rows;
+        this.total = data.total;
         this.loading = false;
       });
     },

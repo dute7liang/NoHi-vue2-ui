@@ -352,11 +352,11 @@ export default {
     getList() {
       this.loading = true;
       listRole(this.addDateRange(this.queryParams, this.dateRange)).then(response => {
-          this.roleList = response.rows;
-          this.total = response.total;
-          this.loading = false;
-        }
-      );
+        let { data } = response
+        this.roleList = data.rows;
+        this.total = data.total;
+        this.loading = false;
+      });
     },
     /** 查询菜单树结构 */
     getMenuTreeselect() {
@@ -391,15 +391,17 @@ export default {
     /** 根据角色ID查询菜单树结构 */
     getRoleMenuTreeselect(roleId) {
       return roleMenuTreeselect(roleId).then(response => {
-        this.menuOptions = response.menus;
-        return response;
+        let { data } = response
+        this.menuOptions = data.menus;
+        return data;
       });
     },
     /** 根据角色ID查询部门树结构 */
     getRoleDeptTreeselect(roleId) {
       return roleDeptTreeselect(roleId).then(response => {
-        this.deptOptions = response.depts;
-        return response;
+        let { data } = response
+        this.deptOptions = data.depts;
+        return data;
       });
     },
     // 角色状态修改

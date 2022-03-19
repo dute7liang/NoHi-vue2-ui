@@ -224,8 +224,9 @@ export default {
     getList() {
       this.loading = true;
       listNotice(this.queryParams).then(response => {
-        this.noticeList = response.rows;
-        this.total = response.total;
+        let { data } = response
+        this.noticeList = data.rows;
+        this.total = data.total;
         this.loading = false;
       });
     },
